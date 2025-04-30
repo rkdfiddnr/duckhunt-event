@@ -37503,14 +37503,14 @@ var Game = function () {
     key: 'win',
     value: function win() {
       _Sound2.default.play('champ');
-      this.gameStatus = 'You Win!';
+      this.gameStatus = '당신은 아임닭을 이기셨습니다.';
       this.showReplay(this.getScoreMessage());
     }
   }, {
     key: 'loss',
     value: function loss() {
       _Sound2.default.play('loserSound');
-      this.gameStatus = 'You Lose!';
+      this.gameStatus = '당신은 아임닭에게 졌습니다.';
       this.showReplay(this.getScoreMessage());
     }
   }, {
@@ -37521,27 +37521,27 @@ var Game = function () {
       var percentage = this.score / this.maxScore * 100;
 
       if (percentage === 100) {
-        scoreMessage = 'Flawless victory.';
+        scoreMessage = '당신의 실력은 쩝니다';
       }
 
       if (percentage < 100) {
-        scoreMessage = 'Close to perfection.';
+        scoreMessage = '당신의 실력은 쩝니다2';
       }
 
       if (percentage <= 95) {
-        scoreMessage = 'Truly impressive score.';
+        scoreMessage = '당신의 실력은 쩝니다3';
       }
 
       if (percentage <= 85) {
-        scoreMessage = 'Solid score.';
+        scoreMessage = '당신의 실력은 쩝니다4';
       }
 
       if (percentage <= 75) {
-        scoreMessage = 'Participation award.';
+        scoreMessage = '당신의 실력은 쩝니다5';
       }
 
       if (percentage <= 63) {
-        scoreMessage = 'Yikes.';
+        scoreMessage = '당신의 실력은 쩝니다6';
       }
 
       return scoreMessage;
