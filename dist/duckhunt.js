@@ -37289,65 +37289,13 @@ var Game = function () {
       });
 
       this.scaleToWindow();
-      this.addLinkToLevelCreator();
-      this.addPauseLink();
-      this.addMuteLink();
-      this.addFullscreenLink();
+      // this.addLinkToLevelCreator();
+      // this.addPauseLink();
+      // this.addMuteLink();
+      // this.addFullscreenLink();
       this.bindEvents();
       this.startLevel();
       this.animate();
-    }
-  }, {
-    key: 'addFullscreenLink',
-    value: function addFullscreenLink() {
-      this.stage.hud.createTextBox('fullscreenLink', {
-        style: BOTTOM_LINK_STYLE,
-        location: _Stage2.default.fullscreenLinkBoxLocation(),
-        anchor: {
-          x: 1,
-          y: 1
-        }
-      });
-      this.stage.hud.fullscreenLink = 'fullscreen (f)';
-    }
-  }, {
-    key: 'addMuteLink',
-    value: function addMuteLink() {
-      this.stage.hud.createTextBox('muteLink', {
-        style: BOTTOM_LINK_STYLE,
-        location: _Stage2.default.muteLinkBoxLocation(),
-        anchor: {
-          x: 1,
-          y: 1
-        }
-      });
-      this.stage.hud.muteLink = 'mute (m)';
-    }
-  }, {
-    key: 'addPauseLink',
-    value: function addPauseLink() {
-      this.stage.hud.createTextBox('pauseLink', {
-        style: BOTTOM_LINK_STYLE,
-        location: _Stage2.default.pauseLinkBoxLocation(),
-        anchor: {
-          x: 1,
-          y: 1
-        }
-      });
-      this.stage.hud.pauseLink = 'pause (p)';
-    }
-  }, {
-    key: 'addLinkToLevelCreator',
-    value: function addLinkToLevelCreator() {
-      this.stage.hud.createTextBox('levelCreatorLink', {
-        style: BOTTOM_LINK_STYLE,
-        location: _Stage2.default.levelCreatorLinkBoxLocation(),
-        anchor: {
-          x: 1,
-          y: 1
-        }
-      });
-      this.stage.hud.levelCreatorLink = 'level creator (c)';
     }
   }, {
     key: 'bindEvents',
@@ -37470,7 +37418,9 @@ var Game = function () {
       this.quackingSoundId = _Sound2.default.play('quacking');
       this.wave += 1;
       this.waveStartTime = Date.now();
-      this.bullets = this.level.bullets;
+
+      this.bullets = 20; // ← 총알 수를 고정
+
       this.ducksShotThisWave = 0;
       this.waveEnding = false;
 
@@ -37645,6 +37595,10 @@ var Game = function () {
         _Sound2.default.play('gunSound');
         this.bullets -= 1;
         this.updateScore(this.stage.shotsFired(clickPoint, this.level.radius));
+        // 🔻 총알이 0이 되었으면 게임 오버 처리
+        if (this.bullets === 0) {
+          this.loss(); // 게임 종료
+        }
         return;
       }
 
@@ -38452,6 +38406,7 @@ var Duck = function (_Character) {
     value: function shot() {
       var _this3 = this;
 
+      console.log("shot 쌋습니다");
       if (!this.alive) {
         return;
       }
