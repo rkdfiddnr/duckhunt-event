@@ -37891,7 +37891,7 @@ function parseOrDefault(param, fallback) {
 module.exports.parseLevelQueryString = function () {
   return {
     id: -1,
-    title: urlQueryString.get('title') || 'Generated Level',
+    title: urlQueryString.get('title') || '아임닭 닭들잡기 게임',
     waves: parseOrDefault('waves', 3), // 라운드 수
     ducks: parseOrDefault('ducks', 5), // 한 라운드 당 오리 수
     pointsPerDuck: parseOrDefault('points', 150), // 오리 당 점수
