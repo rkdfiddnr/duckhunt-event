@@ -37595,6 +37595,10 @@ var Game = function () {
         _Sound2.default.play('gunSound');
         this.bullets -= 1;
         this.updateScore(this.stage.shotsFired(clickPoint, this.level.radius));
+        // 🐶 강아지를 쐈을 때 무시
+        if (ducksShot > 0) {
+          this.updateScore(ducksShot);
+        }
         // 🔻 총알이 0이 되었으면 게임 오버 처리
         if (this.bullets === 0) {
           this.loss(); // 게임 종료
